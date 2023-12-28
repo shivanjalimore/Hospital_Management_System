@@ -3,11 +3,13 @@ package com.Controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.Beans.Doctor;
 import com.DAO.DoctorInsert;
@@ -57,14 +59,35 @@ public class AddDoctor extends HttpServlet {
 		doctor.setPassword(password);
 		
 		DoctorInsert dinsert = new DoctorInsert();
+		
+		HttpSession session = request.getSession();
 		try {
-			dinsert.doctorInsert(doctor);
+			 if(dinsert.doctorInsert(doctor))
+			 {
+			 session.setAttribute("succMsg","Doctor Added Sucessfully");
+			// Get the RequestDispatcher for the "doctor.jsp" page
+//			 RequestDispatcher dispatcher = request.getRequestDispatcher
+			 response.sendRedirect("admin/doctor.jsp");	 
+//			 ("admin/doctor.jsp");
+			 // Forward the request to the target JSP page using RequestDispatcher
+//			    dispatcher.forward(request, response);
+			
+			 }
+			 else
+			 {
+				 session.setAttribute("errorMsg","Something wrong on server");
+				 
+				 response.sendRedirect("admin/doctor.jsp");	
+				 
+//				 RequestDispatcher dispatcher = request.getRequestDispatcher("admin/doctor.jsp");
+//				 dispatcher.forward(request, response);
+			 }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("adminindex.jsp");
+		
 		
 	}
 
