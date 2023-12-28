@@ -10,22 +10,174 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Doctor</title>
-<link rel="stylesheet" href="doctor.css">
+
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<style>
-  #editContent {
-    display: none;
-  }
-</style>
+
 </head>
 <body>
 <%@include file="admin_navbar.jsp"%>
+
+<style>
+
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.containeradmin {
+   height:100vh;
+    width:100%;
+    
+}
+
+.card {
+    width:100%;
+    display:flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    
+}
+
+.card-body {
+    padding: 20px;
+    flex:1;
+}
+.card-body-1
+{
+	flex:3;
+	padding:40px;
+}
+
+.fs-3 {
+    font-size: 1.75rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+
+.heading {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.col {
+    width: 14%; /* Adjust column width as needed */
+}
+
+/* Optional: Hover effect for table rows */
+.table tr:hover {
+    background-color: #f9f9f9;
+}
+
+#editContent
+{
+	position:absolute;
+	top:10%;
+	left:30%;
+}
+ .error-message {
+            font-size: 24px;
+            text-align: center;
+            color: red;
+        }
+
+        .success-message {
+            font-size: 24px;
+            text-align: center;
+            color: green;
+        }
+
+</style>
  <div class="containeradmin">
+     
+      <% 
+        // Check for errorMsg and display if not empty
+        if (session.getAttribute("errorMsg") != null && !session.getAttribute("errorMsg").toString().isEmpty()) {
+    %>
+            <p class="error-message">
+                <%= session.getAttribute("errorMsg") %>
+            </p>
+            <% session.removeAttribute("errorMsg"); %>
+    <% 
+        }
+    %>
+
+    <% 
+        // Check for succMsg and display if not empty
+        if (session.getAttribute("succMsg") != null && !session.getAttribute("succMsg").toString().isEmpty()) {
+    %>
+            <p class="success-message">
+                <%= session.getAttribute("succMsg") %>
+            </p>
+            <% session.removeAttribute("succMsg"); %>
+    <% 
+        }
+    %>
        
-                <div class="card paint-card">
+                <div class="card" style=" position:relative;">
                     <div class="card-body">
                         <p class="fs-3 text-center">Add Doctor</p>
-                        <!-- Your error and success messages here -->
+                     
                         <form action="../AddDoctor" method="post">
                             <div class="form-group">
                                 <label class="form-label" for="fullname">Full Name</label>
@@ -54,8 +206,6 @@
 									}
 									%>
                                     
-                                    
-                                    <!-- Your options from database -->
                                 </select>
                             </div>
                             <div class="form-group">
@@ -109,11 +259,12 @@
                 <td><%=d.getPassword() %></td>
                 <td>
                 
-                <form action="../EditDoctor" method="post">
-                <input type="hidden" name="id" value="<%=d.getId() %>">
-               <button type="submit" class="edit-btn" style="background-color:blue;padding:8px;color:white onclick="togglePages()">Edit</button>
-              </form>
-              <form action="../DeleteDoctor" method="post" >
+              
+               <a href="edit_doctor.jsp?id=<%=d.getId() %>">
+               <button type="button" class="edit-btn" id="specific-edit-btn" style="background-color:blue;padding:8px;color:white;">Edit</button>
+               </a>           
+                   
+               <form action="../DeleteDoctor" method="post" > 
                 <input type="hidden" name="id" value="<%=d.getId() %>">
                 <button type="submit" class="delete-btn" style="background-color:red;padding:8px;color:white">Delete</button>
               </form>
@@ -127,90 +278,9 @@
                       </table>
                     </div>
                 </div>
-                
-                
-                <%
-   Doctor existingDoctor = (Doctor) request.getAttribute("existingDoctor");
-   %>
-            
-             <div id="editContent">
-        <div class="container">
-            <h1> Edit Doctor Information</h1>
-            <form id="registrationForm" action="Updatedoctor" method="post">
+   
+            </div>   
                
-               <input type="hidden" id="id" name="id" value="<%= existingDoctor != null ? existingDoctor.getId() : "" %>">
-       <div class="form-group">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" name="name" value="<%= existingDoctor != null ? existingDoctor.getFullName() : "" %>">
-      </div>
-      <div class="form-group">
-        <label for="dob">DOB:</label>
-        <input type="date" id="dob" name="dob" value="<%= existingDoctor != null ? existingDoctor.getDob() : "" %>">
-      </div>
-      <div class="form-group">
-        <label for="name">Qualification:</label>
-        <input type="text" id="qualification" name="qualification" value="<%= existingDoctor != null ? existingDoctor.getQualification() : "" %>">
-      </div>
-      
-      <div class="form-group">
-                                <label class="form-label" for="spec">Specialist</label>
-                                <select name="spec" id="spec" class="form-control" value="<%= existingDoctor != null ? existingDoctor.getSpecialist() : "" %>">
-                                    <option>--select--</option>
-                                    
-                                    <%
-									SpecialistInsert dao1 = new SpecialistInsert();
-									List<Specialist> list1 = dao1.getAllSpecialist();
-									for (Specialist s : list1) {
-									%>
-									<option><%=s.getSpecialistName()%></option>
-									<%
-									}
-									%>
-                                    
-                                    
-                                    <!-- Your options from database -->
-                                </select>
-                            </div>
-                            
-      <div class="form-group">
-        <label for="email">Email ID:</label>
-        <input type="email" id="email" name="email" value="<%= existingDoctor != null ? existingDoctor.getEmail() : "" %>">
-      </div>
-      <div class="form-group">
-      <label class="form-label" for="mobno">Mob No</label>
-      <input type="text"  name="mobno" id="mobno" class="form-control" value="<%= existingDoctor != null ? existingDoctor.getMobNo(): "" %>">
-      </div>
-                            
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" value="<%= existingDoctor != null ? existingDoctor.getPassword() : "" %>">
-      </div>
-      <button type="submit" style="background-color:blue;">Edit</button>
-
-                <button type="submit" style="background-color: blue;">Edit</button>
-            </form>
-        </div>
-    </div> 
-            
-            
-           
-    </div>
-    
-    <script>
-function togglePages() {
-    var initialContent = document.querySelector(".card.paint-card");
-    var editContent = document.getElementById("editContent");
-
-    // Toggle visibility
-    if (initialContent.style.display !== "none") {
-        initialContent.style.display = "none";
-        editContent.style.display = "block"; // Show the edit content
-    } else {
-        initialContent.style.display = "block"; // Show the initial content
-        editContent.style.display = "none";
-    }
-}
-</script>
-
+             
 </body>
 </html>
