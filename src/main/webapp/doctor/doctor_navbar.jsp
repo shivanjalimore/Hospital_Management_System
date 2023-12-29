@@ -28,7 +28,7 @@
 .navbar-brand {
     color: #fff; /* Change color as needed */
     text-decoration: none;
-    font-size: 24px;
+    font-size: 23px;
     font-weight: bold;
 }
 
@@ -87,17 +87,33 @@
     padding: 8px 0;
 }
 
-.dropdown-menu a {
+.dropdown-menu li {
     color: #333; /* Change color as needed */
     text-decoration: none;
     display: block;
     padding: 8px 16px;
 }
 
+a
+{
+text-decoration:none;
+}
 .dropdown:hover .dropdown-menu {
     display: block;
 }
 
+/* Define a custom class for the button to target */
+.custom-button {
+  /* Reset default button styles */
+  background: none;
+  border: none;
+  padding: 0;
+  /* Customize other styles as needed */
+  /* For example: */
+  color: #333; /* Text color */
+  cursor: pointer; /* Change cursor on hover */
+  /* Add additional styling if necessary */
+}
 
 </style>
 <nav class="navbar">
@@ -117,7 +133,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="edit_profile.jsp">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="../DoctorLogout">Logout</a></li>
+                      <form action="../DoctorLogout" method="post">
+                            <li><button type="submit" class="dropdown-item custom-button">Logout</button></li>
+                       </form>
                     </ul>
                 </div>
             <!-- </form> -->
