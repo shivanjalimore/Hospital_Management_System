@@ -24,7 +24,7 @@
         // Check for errorMsg and display if not empty
         if (session.getAttribute("errorMsg") != null && !session.getAttribute("errorMsg").toString().isEmpty()) {
     %>
-            <p class="error-message">
+            <p class="error-message" style="color:red;">
                 <%= session.getAttribute("errorMsg") %>
             </p>
             <% session.removeAttribute("errorMsg"); %>
@@ -36,7 +36,7 @@
         // Check for succMsg and display if not empty
         if (session.getAttribute("succMsg") != null && !session.getAttribute("succMsg").toString().isEmpty()) {
     %>
-            <p class="success-message">
+            <p class="success-message" style="color:red;">
                 <%= session.getAttribute("succMsg") %>
             </p>
             <% session.removeAttribute("succMsg"); %>
