@@ -1,24 +1,11 @@
 package com.Beans;
 
 public class User {
-
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	private int id;
 	private String fullName;
 	private String email;
 	private String password;
-	
-	
-
-//	public User(String fullName, String email, String password) {
-//		super();
-//		this.fullName = fullName;
-//		this.email = email;
-//		this.password = password;
-//	}
 	
 	public int getId() {
 		return id;
