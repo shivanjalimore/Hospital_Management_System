@@ -21,11 +21,31 @@
               <div class="card-body">
                 <p class="fs-4 text-center">User Login</p>
                 
-                <p class="text-center text-success fs-3"></p>
+                 <% 
+        // Check for errorMsg and display if not empty
+        if (session.getAttribute("errorMsg") != null && !session.getAttribute("errorMsg").toString().isEmpty()) {
+    %>
+            <p class="error-message">
+                <%= session.getAttribute("errorMsg") %>
+            </p>
+            <% session.removeAttribute("errorMsg"); %>
+    <% 
+        }
+    %>
+
+    <% 
+        // Check for succMsg and display if not empty
+        if (session.getAttribute("succMsg") != null && !session.getAttribute("succMsg").toString().isEmpty()) {
+    %>
+            <p class="success-message">
+                <%= session.getAttribute("succMsg") %>
+            </p>
+            <% session.removeAttribute("succMsg"); %>
+    <% 
+        }
+    %>
                 
-                <p class="text-center text-danger fs-5"></p>
-                
-                <form action="doctorLogin" method="post">
+                <form action="UserLogin" method="post">
                   <div class="mb-3">
                     <label class="form-label">Email address</label>
                     <input required name="email" type="email" class="form-control">
