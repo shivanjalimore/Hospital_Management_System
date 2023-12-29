@@ -1,5 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +68,9 @@ i {
    
 </style>
 
-
+<c:if test="${empty doctObj}">
+  <c:redirect url="../doctor_login.jsp"></c:redirect>
+</c:if>
 
 <p class="text-center fs-3">Doctor Dashboard</p>
 
