@@ -39,7 +39,7 @@
                                 <input required name="password" id="password" type="password" class="form-control">
                                 <span id="password-error"  style="color: red;"> </span>
                             </div>
-                            <button type="button" onclick="submitform()" class="btn bg-success">Register</button>
+                            <button type="submit" onclick="submitform()" class="btn bg-success">Register</button>
                         </form>
 
                         <div id="login" style="height: 15px;display: none;text-align: center;">
