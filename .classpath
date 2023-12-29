@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="D:/Jar files/javax.servlet.jar"/>
 	<classpathentry kind="lib" path="D:/Jar files/jsp-api-2.1.jar"/>
 	<classpathentry kind="lib" path="D:/Jar files/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/Jar files/jstl-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
