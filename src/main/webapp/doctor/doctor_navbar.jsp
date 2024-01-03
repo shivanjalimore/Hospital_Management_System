@@ -28,7 +28,7 @@
 .navbar-brand {
     color: #fff; /* Change color as needed */
     text-decoration: none;
-    font-size: 23px;
+    font-size: 20.5px;
     font-weight: bold;
 }
 
@@ -117,8 +117,8 @@ text-decoration:none;
 
 </style>
 <nav class="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="../index.jsp"><i class="fas fa-clinic-medical"></i> Medi Home</a>
+    <div class="container-fluid" >
+        <a class="navbar-brand" href="../index.jsp"><i class="fas fa-clinic-medical" style="color:white;"></i> Medi Home</a>
         
         <div class="navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
