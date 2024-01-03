@@ -180,7 +180,7 @@ text-decoration:none;
               <c:if test="${empty userObj }">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="admin_login.jsp"><i class="fas fa-sign-in-alt"></i> ADMIN</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="doctor_login.jsp">DOCTOR</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="user_appointment.html">APPOINTMENT</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="appointment.jsp">APPOINTMENT</a></li>
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="user_login.jsp">USER</a></li>
                   
               </c:if>
@@ -188,8 +188,8 @@ text-decoration:none;
               
               <c:if test="${not empty userObj }">
               
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="user/bookappointment.jsp"> APPOINTMENT</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="user/appointment.jsp">VIEW APPOINTMENT</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="appointment.jsp"> APPOINTMENT</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="show_appointment.jsp">VIEW APPOINTMENT</a></li>
                     
                     
                     <li class="nav-item">
