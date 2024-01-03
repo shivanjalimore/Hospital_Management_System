@@ -52,6 +52,7 @@
             </div>
         </div>
     </div>
+    <%@include file="/footer.jsp"%>  
     <script src="Uservalidations.js"></script>
 
 </body>
