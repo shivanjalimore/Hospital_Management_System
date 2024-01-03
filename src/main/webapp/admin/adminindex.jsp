@@ -187,7 +187,7 @@ h1
    
 </div>
    
-
+<%@include file="/footer.jsp"%>  
 <script src="Specialistscript.js"></script>
 
 </body>
