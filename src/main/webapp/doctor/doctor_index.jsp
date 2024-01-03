@@ -74,7 +74,7 @@ i {
 
 <p class="text-center fs-3">Doctor Dashboard</p>
 
-<div class="container">
+<div class="container" style="height:79.3vh;">
     <div class="row">
         <div class="col-1">
             <div class="card paint-card">
