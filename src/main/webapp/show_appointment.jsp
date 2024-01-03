@@ -162,9 +162,9 @@
                   <td scope="col">
                       
                       <%
-                          if ("Pending".equals(ap.getStatus())) {
+                          if ("pending".equals(ap.getStatus())) {
                       %>
-                         <a href="#" class="btn btn-sm btn-warning">Pending</a>
+                         <a href="#" class="btn btn-sm btn-warning" style="background-color:yellow;text-decoration:none;color: inherit;pointer-events: none;cursor: default;">Pending</a>
                       <%
                           } else {
                       %>
