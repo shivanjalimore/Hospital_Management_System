@@ -154,7 +154,7 @@
 <%@include file="/navbar.jsp"%>
     <div class="main-container">
     <div class="img-container">
-       <img src="../img/doctor-10.png">
+       <img src="img/doctor-10.png">
     </div>
     <div class="container">
                         <% 
