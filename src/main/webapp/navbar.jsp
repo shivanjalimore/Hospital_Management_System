@@ -200,7 +200,7 @@ text-decoration:none;
                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a class="dropdown-item" href="edit_profile.jsp" style="text-decoration:none;">Change Password</a></li>
                             <li>
-                                <form action="../UserLogout" method="post">
+                                <form action="UserLogout" method="post">
                                   <button type="submit" class="dropdown-item custom-button">Logout</button>
                                </form>
                            </li>
