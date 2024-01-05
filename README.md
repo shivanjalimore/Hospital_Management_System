@@ -1,0 +1,3 @@
+- To access the codebase, navigate to the following directories:
+-> For the backend code, proceed to src/main/java/com.
+-> For the frontend code, head over to src/main/webapp.
