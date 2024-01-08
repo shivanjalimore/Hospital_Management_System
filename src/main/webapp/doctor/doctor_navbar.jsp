@@ -122,7 +122,7 @@ text-decoration:none;
         
         <div class="navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="../index.jsp">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" href="doctor_index.jsp">HOME</a></li>
                 <li class="nav-item"><a class="nav-link" href="patient.jsp">PATIENT</a></li>
             </ul>
 
