@@ -224,4 +224,123 @@ public class DoctorInsert {
 			
 			
         }
+        
+        
+        public int countDoctor() throws SQLException
+        {
+        	int i =0;
+        	try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+				
+				
+				PreparedStatement ps= con.prepareStatement("select * from doctor");
+				ResultSet rs= ps.executeQuery();
+				while(rs.next())
+				{
+					i++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return i;
+        }
+        
+        public int countAppointment() throws SQLException
+        {
+        	int i =0;
+        	try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+				
+				
+				PreparedStatement ps= con.prepareStatement("select * from appointment");
+				ResultSet rs= ps.executeQuery();
+				while(rs.next())
+				{
+					i++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return i;
+        }
+        
+        public int countUser() throws SQLException
+        {
+        	int i =0;
+        	try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+				
+				
+				PreparedStatement ps= con.prepareStatement("select * from user_details");
+				ResultSet rs= ps.executeQuery();
+				while(rs.next())
+				{
+					i++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return i;
+        }
+        
+        public int countSpecialist() throws SQLException
+        {
+        	int i =0;
+        	try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+				
+				
+				PreparedStatement ps= con.prepareStatement("select * from specialist");
+				ResultSet rs= ps.executeQuery();
+				while(rs.next())
+				{
+					i++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return i;
+        }
+        
+        public int countAppointmentByDoctorID(int did) throws SQLException
+        {
+        	int i =0;
+        	try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+				
+				
+				PreparedStatement ps= con.prepareStatement("select * from appointment where doctorId=?");
+				ps.setInt(1, did);
+				ResultSet rs= ps.executeQuery();
+				while(rs.next())
+				{
+					i++;
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return i;
+        }
+        
+        
 }
