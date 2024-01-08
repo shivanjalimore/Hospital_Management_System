@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
+<%@page import="com.Beans.*" %>
+<%@page import="com.DAO.*" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,6 +120,10 @@ h1
 }
 </style>
 
+<%
+   DoctorInsert dao = new DoctorInsert();
+%>
+
 <div class="row">
     <h1>Admin Dashboard</h1>
         <div class="col-md-4">
@@ -121,7 +131,7 @@ h1
             <div class="card paint-card">
                 <div class="card-body text-center text-success">
                     <i class="fas fa-user-md fa-3x"></i><br>
-                    <p class="fs-4 text-center">Doctor <span id="doctorCount">0</span></p>
+                    <p class="fs-4 text-center">Doctor <span id="doctorCount"><%=dao.countDoctor() %></span></p>
                 </div>
             </div>
             </a>
@@ -131,7 +141,7 @@ h1
             <div class="card paint-card">
                 <div class="card-body text-center text-success">
                     <i class="fas fa-user-circle fa-3x"></i><br>
-                    <p class="fs-4 text-center">User <span id="userCount">0</span></p>
+                    <p class="fs-4 text-center">User <span id="userCount"><%=dao.countUser() %></span></p>
                 </div>
             </div>
         </div>
@@ -140,7 +150,7 @@ h1
             <div class="card paint-card">
                 <div class="card-body text-center text-success">
                     <i class="far fa-calendar-check fa-3x"></i><br>
-                    <p class="fs-4 text-center">Total Appointment <span id="appointmentCount">0</span></p>
+                    <p class="fs-4 text-center">Total Appointment <span id="appointmentCount"><%=dao.countAppointment() %></span></p>
                 </div>
             </div>
         </div>
@@ -149,7 +159,7 @@ h1
             <div class="card paint-card" id="specialistCard">
                 <div class="card-body text-center text-success">
                     <i class="far fa-calendar-check fa-3x"></i><br>
-                    <p class="fs-4 text-center">Specialist <span id="specialistCount">0</span></p>
+                    <p class="fs-4 text-center">Specialist <span id="specialistCount"><%=dao.countSpecialist() %></span></p>
                 </div>
             </div>
         </div>
