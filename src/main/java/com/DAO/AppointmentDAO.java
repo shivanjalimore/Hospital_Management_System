@@ -200,4 +200,44 @@ public class AppointmentDAO {
 		
 		return f;
 	}
+	
+	public List<Appointment> getAllAppointment() throws SQLException
+	{
+		List<Appointment> list = new ArrayList<>();
+		Appointment ap = null;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+			
+			
+			PreparedStatement ps= con.prepareStatement("select * from appointment order by id desc");
+			
+			
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				ap = new Appointment();
+				ap.setId(rs.getInt(1));
+				ap.setUserId(rs.getInt(2));
+				ap.setFullName(rs.getString(3));
+				ap.setGender(rs.getString(4));
+				ap.setAge(rs.getString(5));
+				ap.setAppoinDate(rs.getString(6));
+				ap.setEmail(rs.getString(7));
+				ap.setPhNo(rs.getString(8));
+				ap.setDiseases(rs.getString(9));
+				ap.setDoctorId(rs.getInt(10));
+				ap.setAddress(rs.getString(11));
+				ap.setStatus(rs.getString(12));
+				list.add(ap);	
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+				
+	}
 }
