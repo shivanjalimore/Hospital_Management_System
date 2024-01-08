@@ -2,7 +2,10 @@
 <%@page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- 
+<%@page import="com.Beans.*" %>
+<%@page import="com.DAO.*" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,6 +75,11 @@ i {
   <c:redirect url="../doctor_login.jsp"></c:redirect>
 </c:if>
 
+<%
+  Doctor d = (Doctor)session.getAttribute("doctObj");
+  DoctorInsert dao = new DoctorInsert();
+%>
+
 <p class="text-center fs-3">Doctor Dashboard</p>
 
 <div class="container" style="height:79.3vh;">
@@ -81,7 +89,7 @@ i {
                 <div class="card-body text-center text-success">
                     <i class="fas fa-user-md fa-3x"></i><br>
                     <p class="fs-4 text-center">
-                        Doctor <br>
+                        Doctor <br><%=dao.countDoctor() %>
                     </p>
                 </div>
             </div>
@@ -92,7 +100,7 @@ i {
                 <div class="card-body text-center text-success">
                     <i class="far fa-calendar-check fa-3x"></i><br>
                     <p class="fs-4 text-center">
-                        Total Appointment <br>
+                        Total Appointment <br><%=dao.countAppointmentByDoctorID(d.getId())%>
                         
                     </p>
                 </div>
