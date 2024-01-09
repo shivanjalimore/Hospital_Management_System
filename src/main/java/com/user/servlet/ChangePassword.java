@@ -40,9 +40,9 @@ public class ChangePassword extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int uid = Integer.parseInt(request.getParameter("id"));
-		String oldPassword = request.getParameter("oldpassword");
-		String newPassword = request.getParameter("newpassword");
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		String oldPassword = request.getParameter("oldPassword");
+		String newPassword = request.getParameter("newPassword");
 		
 		UserInsert dao = new UserInsert();
 		HttpSession session = request.getSession();
@@ -53,15 +53,18 @@ public class ChangePassword extends HttpServlet {
 				if(dao.changePassword(uid, newPassword))
 				{
 					session.setAttribute("succMsg", "Password Changed Sucessfully");
+					response.sendRedirect("change_password.jsp");
 				}
 				else
 				{
 					session.setAttribute("errorMsg", "Something wrong on server");
+					response.sendRedirect("change_password.jsp");
 				}
 			}
 			else
 			{
 				session.setAttribute("errorMsg", "Old Password Is Incorrect");
+				response.sendRedirect("change_password.jsp");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
