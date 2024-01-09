@@ -68,6 +68,10 @@
 }
     </style>
 
+<c:if test="${empty userObj}">
+  <c:redirect url = "user_login.jsp"></c:redirect>
+</c:if>
+
     <div class="container p-4">
         <div class="row">
            
@@ -100,11 +104,11 @@
                         <form action="ChangePassword" method="post">
                             <div class="mb-3">
                                 <label for="newPassword">Enter New Password</label>
-                                <input type="password" id="newPassword" class="form-control" required>
+                                <input type="password" id="newPassword" name="newPassword" class="form-control" required>
                             </div>
                             <div class="mb-3">
                                 <label for="oldPassword">Enter Old Password</label>
-                                <input type="password" id="oldPassword" class="form-control" required>
+                                <input type="password" id="oldPassword" name="oldPassword" class="form-control" required>
                             </div>
                             <input type="hidden" id="uid" value="${userObj.id}" name="uid">
                             <button type="submit" id="changePasswordBtn" class="btn btn-success col-md-12">Change Password</button>
