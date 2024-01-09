@@ -66,5 +66,66 @@ public class UserInsert {
 		return u;
 		
 	}
+	
+	//to check old password matches or not
+	public boolean checkOldPassword(int userid, String oldPassword) throws SQLException
+	{
+		
+		boolean f = false;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+			
+			
+			PreparedStatement ps= con.prepareStatement("select * from user_details where id=? and  password=?");
+			ps.setInt(1, userid);
+			ps.setString(2, oldPassword);
+			
+			ResultSet rs =ps.executeQuery();
+			
+			// If old password matches rs.next get value and then f -> true
+			while(rs.next())
+			{
+				f=true;
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return f;
+		
+	}
+	
+	public boolean changePassword(int userid, String newPassword) throws SQLException
+	{
+		
+		boolean f = false;
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement","root","root");		
+			
+			
+			PreparedStatement ps= con.prepareStatement("update user_details set password=? where id=?");
+		
+			ps.setString(1, newPassword);
+			ps.setInt(2, userid);
+			
+			int i = ps.executeUpdate();
+			
+			if(i>0)
+			{
+				f=true;
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return f;
+		
+	}
 
 }
