@@ -198,7 +198,7 @@ text-decoration:none;
                                  <i class="fas fa-user-circle"></i>${userObj.fullName}
                              </button>
                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="edit_profile.jsp" style="text-decoration:none;">Change Password</a></li>
+                            <li><a class="dropdown-item" href="change_password.jsp" style="text-decoration:none;">Change Password</a></li>
                             <li>
                                 <form action="UserLogout" method="post">
                                   <button type="submit" class="dropdown-item custom-button">Logout</button>
