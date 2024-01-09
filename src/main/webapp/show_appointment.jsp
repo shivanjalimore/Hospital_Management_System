@@ -124,6 +124,10 @@
     </style>
 
 
+<c:if test="${empty userObj}">
+  <c:redirect url = "user_login.jsp"></c:redirect>
+</c:if>
+
   <div class="container">
         <div class="paint-card">
             <p class="headline">Appointment List</p>
